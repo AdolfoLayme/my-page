@@ -29,19 +29,24 @@ export default function Navigation() {
         initial="hidden"
         animate="visible"
       >
-        <motion.ul className="flex gap-8">
-          {['Home', 'My About', 'My Works', 'My Blog'].map((item, index) => (
+                <motion.ul className="flex gap-8">
+          {[
+            { name: 'Home', href: '/' },
+            { name: 'About', href: '/about' },
+            { name: 'Works', href: '/works' },
+            { name: 'Blog', href: '/blog' }
+          ].map((item, index) => (
             <motion.li 
               key={index}
               variants={navItemVariants}
               className="relative group"
             >
-                             <Link 
-                 href={index === 0 ? "/" : `/${item.toLowerCase().replace(' ', '-')}`}
-                 className="text-sm font-medium tracking-wider uppercase transition-opacity hover:opacity-80"
-               >
-                 {item}
-               </Link>
+              <Link 
+                href={item.href}
+                className="text-sm font-medium tracking-wider capitalize transition-opacity hover:opacity-80"
+              >
+                {item.name}
+              </Link>
               <div className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-purple-500 to-cyan-400 transition-all duration-300 group-hover:w-full"></div>
             </motion.li>
           ))}

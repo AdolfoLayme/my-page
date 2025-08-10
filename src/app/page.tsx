@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
-// Animaciones para los elementos de la página
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -82,8 +81,16 @@ export default function Home() {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen bg-[var(--background)]">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+    <motion.section 
+      className="flex flex-col items-center justify-center min-h-screen bg-[var(--background)]"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div 
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
+        variants={itemVariants}
+      >
         {cards.map((card, index) => (
           <motion.div
             key={index}
@@ -113,7 +120,7 @@ export default function Home() {
             </Link>
           </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

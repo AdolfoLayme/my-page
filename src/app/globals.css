@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fffafa;
+    --foreground: #030303;
   }
 }
 
@@ -31,7 +31,6 @@ body {
   }
 }
 
-/* globals.css o un módulo CSS */
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
@@ -44,4 +43,12 @@ body {
 }
 .nav-appear {
   animation: slideDown 0.6s ease-out forwards;
+}
+
+.nav-item-blur {
+  filter: blur(8px);
+}
+
+.nav-item-clear {
+  filter: blur(0px);
 }

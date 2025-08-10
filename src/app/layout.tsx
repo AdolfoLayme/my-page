@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import { AnimatedLayout } from "@/components/animations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,15 +31,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-full bg-black text-white`}
       >
-        <Navigation />
+        <AnimatedLayout 
+          loaderText="Adolfo Layme"
+          loaderDuration={2500}
+        >
+          <Navigation />
 
-        <main className="flex-grow">
-        {children}
-        </main>
+          <main className="flex-grow">
+            {children}
+          </main>
 
-        <footer className="py-4 text-center text-sm text-gray-600 ">
-        © {new Date().getFullYear()} - Adolfo Layme Bonifacio. Todos los derechos reservados.
-        </footer>
+        </AnimatedLayout>
+        <footer className="py-4 text-center text-sm text-gray-600">
+            © {new Date().getFullYear()} - Adolfo Layme Bonifacio. Todos los derechos reservados.
+          </footer>
       </body>
     </html>
   );

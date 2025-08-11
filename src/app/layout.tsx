@@ -32,7 +32,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-full bg-black text-white`}
       >
         <AnimatedLayout 
-          loaderText="Adolfo Layme"
           loaderDuration={2500}
         >
           <Navigation />
@@ -44,7 +43,7 @@ export default function RootLayout({
         </AnimatedLayout>
         <footer className="py-4 text-center text-sm text-gray-600">
             © {new Date().getFullYear()} - Adolfo Layme Bonifacio. Todos los derechos reservados.
-          </footer>
+        </footer>
       </body>
     </html>
   );

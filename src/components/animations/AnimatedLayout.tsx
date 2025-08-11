@@ -20,29 +20,39 @@ export default function AnimatedLayout({
   loaderDuration = 2500
 }: AnimatedLayoutProps) {
   const [isLoading, setIsLoading] = useState(showLoader);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const pathname = usePathname();
 
-  useEffect(() => {
-    if (isInitialLoad && showLoader) {
-      setIsLoading(true);
-    } else {
-      setIsLoading(false);
+  const getLoaderText = () => {
+    switch (pathname) {
+      case '/':
+        return "Adolfo Layme";
+      case '/about':
+        return "Conoce mi historia";
+      case '/works':
+        return "Mis Proyectos";
+      case '/blog':
+        return "Mi Blog";
+      default:
+        return loaderText;
     }
-  }, [pathname, isInitialLoad, showLoader]);
-
-  const handleLoaderComplete = () => {
-    setIsLoading(false);
-    setIsInitialLoad(false);
   };
+
+  useEffect(() => {
+    setIsLoading(true);
+    
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, loaderDuration);
+
+    return () => clearTimeout(timer);
+  }, [pathname, loaderDuration]);
 
   return (
     <>
-      {isLoading && isInitialLoad && (
+      {isLoading && (
         <PageLoader 
-          text={loaderText}
+          text={getLoaderText()}
           duration={loaderDuration}
-          onComplete={handleLoaderComplete}
         />
       )}
       <AnimatePresence mode="wait">
